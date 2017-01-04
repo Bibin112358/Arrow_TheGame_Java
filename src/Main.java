@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
 	//first school change comment
-	//halloooooooooooooooooooooooooooooooooo
+	//halloooooooooooooooooooooooooooooooooooo
 	public static void main(String[] args) {
 		launch(args);
 	}
