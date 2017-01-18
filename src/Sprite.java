@@ -8,6 +8,7 @@ public class Sprite {
 	
 	double x; //relative to world coordinate
 	double y;
+	double r_x, r_y; //position on screen
 	double w; //width
 	double h; //height
 	
@@ -20,17 +21,19 @@ public class Sprite {
 		//XML
 	}
 	
-	public void update(double t){
+	/*public void update(double t){
 		x = x+ vx*t;
 		y = y+ vy*t;
-	}
+	}*///not needed?
 	
 	public void render(GraphicsContext gc){
-		if(pos >= im.length){
+		/*if(pos >= im.length){
 			pos=0;
 		}
 		gc.drawImage(im[(int)pos], x, y);
-		pos = pos + speed;
+		pos = pos + speed;*/
+		r_x = world_x + x;
+		r_y = world_y + y;
 	}
 	
 	public Rectangle2D getBoundary(){

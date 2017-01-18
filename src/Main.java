@@ -14,22 +14,19 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-	//first school change comment
-	//second change home
-	//halloooooooooooooooooooooooooooooooooooo
 	public static void main(String[] args) {
 		launch(args);
 	}
 
-	//vars
+	//vars declaration
 	String title;
-	int window_h=800, window_w=600;
+	static int window_h=800, window_w=600;
 	
 	//game vars
 	Player player;
-	Enemy[] enemys;
+	//Enemy[] enemys;
 	Move[] collisions;
-	Sprite sprites;
+	Sprite[] sprites;
 	GraphicsContext gc;
 	
 	ArrayList<String> input = new ArrayList<String>();
@@ -67,18 +64,32 @@ public class Main extends Application{
 		
 		gc = canvas.getGraphicsContext2D();
 		
-		//Sprites
+		//instancing and intit
+		player = new Player();
 		//Collisions
+		collisions = new Move[1];
+		collisions[0] = player;
+		//Sprites
+		sprites = new Sprite[1];
+		sprites[0] = player;
+		
 		
 		new AnimationTimer() {
 			
 			public void handle(long now) {
 				
 				player.control(input);
-				sprites[i].update();
-				collisions[i].collision(Sprites);
+				for(int i=0; i<collisions.length; i++){
+					collisions[i].update();
+				}
+				for(int i=0; i<collisions.length; i++){
+					collisions[i].collision(sprites);
+				}
 				gc.clearRect(0, 0, window_w, window_h);
-				sprites[i].render(gc);
+				for(int i=0; i<sprites.length; i++){
+					sprites[i].render(gc);
+				}
+				
 			}
 		}.start();
 		
