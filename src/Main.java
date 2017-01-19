@@ -22,11 +22,8 @@ public class Main extends Application{
 	String title;
 	static int window_h=800, window_w=600;
 	
-	//game vars
-	Player player;
-	//Enemy[] enemys;
-	Move[] collisions;
-	Sprite[] sprites;
+	//game vars in level
+	Level level;
 	GraphicsContext gc;
 	
 	ArrayList<String> input = new ArrayList<String>();
@@ -64,30 +61,23 @@ public class Main extends Application{
 		
 		gc = canvas.getGraphicsContext2D();
 		
-		//instancing and intit
-		player = new Player();
-		//Collisions
-		collisions = new Move[1];
-		collisions[0] = player;
-		//Sprites
-		sprites = new Sprite[1];
-		sprites[0] = player;
+		level = new LevelTEST();
 		
 		
 		new AnimationTimer() {
 			
 			public void handle(long now) {
 				
-				player.control(input);
-				for(int i=0; i<collisions.length; i++){
-					collisions[i].update();
+				level.player.control(input);
+				for(int i=0; i<level.collisions.length; i++){
+					level.collisions[i].update();
 				}
-				for(int i=0; i<collisions.length; i++){
-					collisions[i].collision(sprites);
+				for(int i=0; i<level.collisions.length; i++){
+					level.collisions[i].collision(level.sprites);
 				}
 				gc.clearRect(0, 0, window_w, window_h);
-				for(int i=0; i<sprites.length; i++){
-					sprites[i].render(gc);
+				for(int i=0; i<level.sprites.length; i++){
+					level.sprites[i].render(gc);
 				}
 				
 			}
