@@ -5,11 +5,11 @@ import javafx.scene.paint.Color;
 
 public class Player extends Move{
 
-	public Player() {
+	public Player(double w, double h) {
 		// TODO Auto-generated constructor stub
 		//all test
-		this.h = 100;
-		this.w = 100;
+		this.h = h;
+		this.w = w;
 	}
 	Color  color = Color.BLUE; //test
 	@Override
@@ -36,12 +36,12 @@ public class Player extends Move{
 		
 		
 		//possible player tracking camera
-		/*if(Main.window_w < r_x+w){
+		if(Main.window_w < r_x+w){
 			world_x = world_x -10;
 			System.out.println(world_x);
 			System.out.println(x);
 			System.out.println(r_x);
-		}*/
+		}
 	}
 	
 	//collision?
