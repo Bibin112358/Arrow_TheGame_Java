@@ -29,7 +29,7 @@ public class Player extends Move{
 		//super.update();
 		
 		//gravity
-		vy = vy + 0.01*t;
+		//vy = vy + 0.01*t;
 		
 		x = x + vx*t;
 		y = y + vy*t;
@@ -52,6 +52,35 @@ public class Player extends Move{
 		color = Color.BLUE;
 		for(Sprite spr:sprites){
 			if(intersects(spr) && !spr.equals(this)){
+				if(spr instanceof Brick){
+					
+					double player_x, player_y, brick_x, brick_y;
+					
+					if(vx>0){
+						player_x = this.x + this.w;
+						brick_x = spr.x;
+					}else{
+						player_x = this.x;
+						brick_x = spr.x + spr.w;
+					}
+					
+					if(vy>0){
+						player_y = this.y + this.h;
+						brick_y = spr.y;
+					}else{
+						player_y = this.y;
+						brick_y = spr.y + spr.h;
+					}
+					
+					if(vx!=0 && ( vy==0 || (player_x - brick_x)/vx < (player_y-brick_y)/vy )){
+						//move x direction
+						this.x = this.x - (player_x - brick_x);
+					}else{
+						//move y direction
+						this.y = this.y - (player_y - brick_y);
+					}
+					
+				}
 				color = Color.RED;
 			}
 		}
@@ -70,6 +99,10 @@ public class Player extends Move{
 		}
 		if(input.contains("UP")){
 			vy=-1.5;
+		}else if(input.contains("DOWN")){
+			vy=1;
+		}else{
+			vy=0;
 		}
 		
 		if(input.contains("R")){
