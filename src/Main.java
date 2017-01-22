@@ -10,6 +10,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -27,6 +28,7 @@ public class Main extends Application{
 	GraphicsContext gc;
 	
 	ArrayList<String> input = new ArrayList<String>();
+	Mouse mouse;
 	
 	public void start(Stage s){
 		
@@ -59,25 +61,31 @@ public class Main extends Application{
 			}
 		});
 		
+		scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent e){
+				mouse = new Mouse(e.getX() - Sprite.world_x, e.getY() - Sprite.world_y); //mousePos relative to scene
+			}
+		});
+		
 		gc = canvas.getGraphicsContext2D();
 		
 		level = new LevelTEST();
-		
+		Sprite.setLevel(level);
 		
 		new AnimationTimer() {
 			
 			public void handle(long now) {
 				
-				level.player.control(input);
-				for(int i=0; i<level.collisions.length; i++){
-					level.collisions[i].update();
+				level.player.control(input, mouse);
+				for(int i=0; i<level.collisions.size(); i++){
+					level.collisions.get(i).update();
 				}
-				for(int i=0; i<level.collisions.length; i++){
-					level.collisions[i].collision(level.sprites);
+				for(int i=0; i<level.collisions.size(); i++){
+					level.collisions.get(i).collision(level.sprites);
 				}
 				gc.clearRect(0, 0, window_w, window_h);
-				for(int i=0; i<level.sprites.length; i++){
-					level.sprites[i].render(gc);
+				for(int i=0; i<level.sprites.size(); i++){
+					level.sprites.get(i).render(gc);
 				}
 				
 			}

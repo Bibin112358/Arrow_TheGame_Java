@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 public class Player extends Move{
 
 	public Player(double w, double h) {
-		// TODO Auto-generated constructor stub
+		// TODO
 		//all test
 		this.h = h;
 		this.w = w;
@@ -14,7 +14,7 @@ public class Player extends Move{
 	Color  color = Color.BLUE; //test
 	@Override
 	public void render(GraphicsContext gc) {
-		// TODO Auto-generated method stub
+		// TODO
 		super.render(gc);
 		gc.setFill(color);//test
 		gc.fillRect(r_x, r_y, w, h); //test purpose
@@ -25,10 +25,10 @@ public class Player extends Move{
 	@Override
 	public void update() {
 		double t=10; //maybe for different FPS
-		// TODO Auto-generated method stub
+		// TODO
 		//super.update();
 		
-		//gravity
+		//TODO gravity
 		//vy = vy + 0.01*t;
 		
 		x = x + vx*t;
@@ -38,15 +38,14 @@ public class Player extends Move{
 		//possible player tracking camera
 		if(Main.window_w < r_x+w){
 			world_x = world_x -10;
-			System.out.println(world_x);
-			System.out.println(x);
-			System.out.println(r_x);
+		}else if(0 > r_x){
+			world_x = world_x +10;
 		}
 	}
 	
 	//collision?
 	@Override
-	public void collision(Sprite... sprites) {//test
+	public void collision(ArrayList<Sprite> sprites) {//test
 		// TODO Auto-generated method stub
 		//super.collision(sprites);
 		color = Color.BLUE;
@@ -86,10 +85,15 @@ public class Player extends Move{
 		}
 	}
 	
-	
+	// TODO maybe not in player class?
 	//control
-	public void control(ArrayList<String> input){
+	public void control(ArrayList<String> input, Mouse mouse){
 	
+		if(mouse != null && mouse.b){
+			Arrow arrow = new Arrow(x+w/2, y+h/2,mouse.x, mouse.y);
+			mouse.b = false;
+		}
+		
 		if(input.contains("RIGHT")){
 			vx=1;
 		}else if(input.contains("LEFT")){

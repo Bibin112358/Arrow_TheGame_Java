@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 public class Sprite {
 	
 	static int world_x, world_y; //to move inside the window
+	static Level level;
 	
 	double x; //relative to world coordinate
 	double y;
@@ -25,6 +26,10 @@ public class Sprite {
 		x = x+ vx*t;
 		y = y+ vy*t;
 	}*///not needed?
+	
+	static public void setLevel(Level level){
+		Sprite.level = level;
+	}
 	
 	public void render(GraphicsContext gc){
 		/*if(pos >= im.length){

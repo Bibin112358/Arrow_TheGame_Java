@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Move extends Sprite{
 
@@ -14,7 +15,7 @@ public class Move extends Sprite{
 		return s.getBoundary().intersects(this.getBoundary());
 	}
 	
-	public void collision(Sprite... sprites){
+	public void collision(ArrayList<Sprite> sprites){
 		
 	}
 }
