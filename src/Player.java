@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 public class Player extends Move{
@@ -94,16 +95,16 @@ public class Player extends Move{
 			mouse.b = false;
 		}
 		
-		if(input.contains("RIGHT")){
+		if(input.contains("D")){
 			vx=1;
-		}else if(input.contains("LEFT")){
+		}else if(input.contains("A")){
 			vx=-1;
 		}else{
 			vx=0;
 		}
-		if(input.contains("UP")){
+		if(input.contains("W")){
 			vy=-1.5;
-		}else if(input.contains("DOWN")){
+		}else if(input.contains("S")){
 			vy=1;
 		}else{
 			vy=0;
