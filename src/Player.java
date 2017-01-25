@@ -91,7 +91,10 @@ public class Player extends Move{
 	public void control(ArrayList<String> input, Mouse mouse){
 	
 		if(mouse != null && mouse.b){
-			Arrow arrow = new Arrow(x+w/2, y+h/2,mouse.x, mouse.y);
+			double ax = mouse.x - (x+w/2);
+			double ay = mouse.y - (y+h/2);
+			double k = 5 / (Math.sqrt(ay*ay + ax*ax));
+			Arrow arrow = new Arrow(x+w/2, y+h/2,ax*k, ay*k);
 			mouse.b = false;
 		}
 		
