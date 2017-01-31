@@ -94,7 +94,7 @@ public class Player extends Move{
 			double ax = mouse.x - (x+w/2);
 			double ay = mouse.y - (y+h/2);
 			double k = 5 / (Math.sqrt(ay*ay + ax*ax));
-			Arrow arrow = new Arrow(x+w/2, y+h/2,ax*k, ay*k);
+			new Arrow(x+w/2, y+h/2,ax*k, ay*k);
 			mouse.b = false;
 		}
 		
