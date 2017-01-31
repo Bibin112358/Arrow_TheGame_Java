@@ -4,6 +4,7 @@ public class Move extends Sprite{
 
 	double vx;
 	double vy;
+	double g=0.01; //gravity
 	
 	public void update(){
 		//type?

@@ -79,9 +79,10 @@ public class Player extends Move{
 						//move y direction
 						this.y = this.y - (player_y - brick_y);
 					}
-					
+					color = Color.ORANGE;
+				}else{
+					color = Color.RED;
 				}
-				color = Color.RED;
 			}
 		}
 	}
