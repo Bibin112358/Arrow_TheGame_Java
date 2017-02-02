@@ -56,7 +56,10 @@ public class Player extends Move{
 					
 					double player_x, player_y, brick_x, brick_y;
 					
-					if(vx>0){
+					double rvx = vx - spr.vx;
+					double rvy = vy - spr.vy;
+					
+					if(rvx>0){
 						player_x = this.x + this.w;
 						brick_x = spr.x;
 					}else{
@@ -64,7 +67,7 @@ public class Player extends Move{
 						brick_x = spr.x + spr.w;
 					}
 					
-					if(vy>0){
+					if(rvy>0){
 						player_y = this.y + this.h;
 						brick_y = spr.y;
 					}else{
@@ -72,7 +75,7 @@ public class Player extends Move{
 						brick_y = spr.y + spr.h;
 					}
 					
-					if(vx!=0 && ( vy==0 || (player_x - brick_x)/vx < (player_y-brick_y)/vy )){
+					if(rvx!=0 && ( rvy==0 || (player_x - brick_x)/rvx < (player_y-brick_y)/rvy )){
 						//move x direction
 						this.x = this.x - (player_x - brick_x);
 					}else{

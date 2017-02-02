@@ -12,6 +12,7 @@ public class Sprite {
 	double r_x, r_y; //position on screen
 	double w; //width
 	double h; //height
+	double vx, vy;
 	
 	Image[] im;
 	double pos;
@@ -22,10 +23,9 @@ public class Sprite {
 		//XML
 	}
 	
-	/*public void update(double t){
-		x = x+ vx*t;
-		y = y+ vy*t;
-	}*///not needed?
+	public void update(/*double t*/){
+		
+	}///not needed?
 	
 	static public void setLevel(Level level){
 		Sprite.level = level;

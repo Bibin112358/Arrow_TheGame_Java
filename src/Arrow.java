@@ -11,13 +11,16 @@ public class Arrow extends Move {
 	double bx, by; //beginning of arrow
 	double l=40; //length, frome b(x,y) to (x,y)
 	double s=1/3.0; //proportion: b(x,y)-s(x,y)-(x,y)
+	boolean hit; //true if hit smh
+	Sprite hitobj; //hit object
+	double Dx, Dy, Dbx, Dby; //vectors from hit(x,y) to tip(x,y) and beginning b(x,y)
 	
 	public Arrow(double x, double y,double vx, double vy) {
 		this.sx = x;
 		this.sy = y;
 		this.vx = vx;
 		this.vy = vy;
-		//TODO test
+		hit=false;
 		h=0;
 		w=0;
 		level.addCollisions(this);
@@ -28,18 +31,23 @@ public class Arrow extends Move {
 		// TODO Auto-generated method stub
 		//super.update();
 		double t=10; //different FPS?
-		vy = vy + g*t;
+		if(!hit){
+			vy = vy + g*t;
+			
+			sx = sx + vx;
+			sy = sy + vy;
+			
+			double k = (Math.sqrt(vy*vy +vx*vx))/l;		
 		
-		sx = sx + vx;
-		sy = sy + vy;
-		
-		double k = (Math.sqrt(vy*vy +vx*vx))/l;
-		
-		if(k!=0){
 			x = sx + vx/k * s;
 			y = sy + vy/k * s;
 			bx = sx - vx/k * (1-s);
 			by = sy - vy/k * (1-s);
+		}else{
+			x=hitobj.x+Dx;
+			y=hitobj.y+Dy;
+			bx=hitobj.x+Dbx;
+			by=hitobj.y+Dby;
 		}
 	}
 	
@@ -57,6 +65,9 @@ public class Arrow extends Move {
 	public void collision(ArrayList<Sprite> sprites) {
 		// TODO Auto-generated method stub
 		//super.collision(sprites);
+		if(hit){
+			return;
+		}
 		for(Sprite spr:sprites){
 			if(intersects(spr) && !spr.equals(this)){
 				if(spr instanceof Brick){
@@ -64,6 +75,12 @@ public class Arrow extends Move {
 					vx=0;
 					g=0;
 					level.collisions.remove(this); //after one hit, shouldn't collide/harm any
+					hit=true;
+					hitobj = spr;
+					Dx = x-hitobj.x;
+					Dy = y-hitobj.y;
+					Dbx= bx-hitobj.x;
+					Dby= by-hitobj.y;
 				}
 			}
 		}

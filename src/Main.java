@@ -77,8 +77,8 @@ public class Main extends Application{
 			public void handle(long now) {
 				
 				level.player.control(input, mouse);
-				for(int i=0; i<level.collisions.size(); i++){
-					level.collisions.get(i).update();
+				for(int i=0; i<level.sprites.size(); i++){
+					level.sprites.get(i).update();
 				}
 				for(int i=0; i<level.collisions.size(); i++){
 					level.collisions.get(i).collision(level.sprites);

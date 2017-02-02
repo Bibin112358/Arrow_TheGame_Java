@@ -14,6 +14,10 @@ public class Brick extends Sprite {
 	@Override
 	public void render(GraphicsContext gc) {
 		// TODO Auto-generated method stub
+		
+		//REMOVE THIS
+		x++;
+		
 		super.render(gc);
 		//test visual
 		gc.setFill(Color.GREEN);
