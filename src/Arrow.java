@@ -56,7 +56,7 @@ public class Arrow extends Move {
 		super.render(gc);
 		//TODO test
 		gc.setFill(Color.ORANGE);
-		gc.strokeLine(r_x - (x-bx), r_y - (y-by), r_x, r_y);
+		gc.strokeLine(bx, by, x, y);
 		//lazy incorrect: (heavy point at front)
 		//gc.strokeLine(sx+world_x -2*(x-sx), sy+world_y-2*(y-sy), sx + world_x, sy + world_y);
 	}
@@ -86,5 +86,13 @@ public class Arrow extends Move {
 		}
 	}
 	
-	
+	@Override
+	public void moveCamera(double dx, double dy) {
+		// TODO Auto-generated method stub
+		super.moveCamera(dx, dy);
+		sx = sx - dx;
+		sy = sy - dy;
+		bx = bx - dx;
+		by = by - dy;
+	}
 }

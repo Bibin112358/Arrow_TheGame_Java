@@ -9,6 +9,9 @@ public class Brick extends Sprite {
 		this.y =y;
 		this.w=w;
 		this.h=h;
+		//REVOME THIS
+		vx=0.1;
+		vy=0;
 	}
 	
 	@Override
@@ -16,11 +19,11 @@ public class Brick extends Sprite {
 		// TODO Auto-generated method stub
 		
 		//REMOVE THIS
-		x++;
+		x+=vx*10;
 		
 		super.render(gc);
 		//test visual
 		gc.setFill(Color.GREEN);
-		gc.fillRect(r_x, r_y, w, h);
+		gc.fillRect(x, y, w, h);
 	}
 }

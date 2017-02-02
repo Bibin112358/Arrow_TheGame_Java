@@ -11,6 +11,8 @@ public class Player extends Move{
 		//all test
 		this.h = h;
 		this.w = w;
+		x=200;
+		y=200;
 	}
 	Color  color = Color.BLUE; //test
 	@Override
@@ -18,7 +20,7 @@ public class Player extends Move{
 		// TODO
 		super.render(gc);
 		gc.setFill(color);//test
-		gc.fillRect(r_x, r_y, w, h); //test purpose
+		gc.fillRect(x, y, w, h); //test purpose
 		
 	}
 	
@@ -36,12 +38,27 @@ public class Player extends Move{
 		y = y + vy*t;
 		
 		
+		//maybe after collision detection?
 		//possible player tracking camera
-		if(Main.window_w < r_x+w){
-			world_x = world_x -10;
-		}else if(0 > r_x){
-			world_x = world_x +10;
+		/*if(Main.window_w < x+w){
+			//world_x = world_x -10;
+			for(int i=0; i<level.sprites.size(); i++){
+				level.sprites.get(i).moveCamera(10, 0); //instead of moving camerea, move every sprite
+			}
+		}else if(0 > x){
+			//world_x = world_x +10;
+			for(int i=0; i<level.sprites.size(); i++){
+				level.sprites.get(i).moveCamera(-10, 0);
+			}
+		}*/
+		double d =x-Main.window_w/2;
+		if(vx !=0){
+			d = d - 3*vx/Math.abs(vx); //feeling of speed
 		}
+		for(int i=0; i<level.sprites.size(); i++){
+			level.sprites.get(i).moveCamera(d , 0);
+		}
+		
 	}
 	
 	//collision?

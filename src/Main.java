@@ -63,7 +63,7 @@ public class Main extends Application{
 		
 		scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent e){
-				mouse = new Mouse(e.getX() - Sprite.world_x, e.getY() - Sprite.world_y); //mousePos relative to scene
+				mouse = new Mouse(e.getX(), e.getY()); //mousePos relative to scene
 			}
 		});
 		
