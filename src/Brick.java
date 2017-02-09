@@ -10,16 +10,31 @@ public class Brick extends Sprite {
 		this.w=w;
 		this.h=h;
 		//REVOME THIS
-		vx=0.1;
+		vx=0;
 		vy=0;
+	}
+	
+	public Brick(double x, double y, double w, double h, double vx, double vy) {
+		// TODO Auto-generated constructor stub
+		this.x = x;
+		this.y =y;
+		this.w=w;
+		this.h=h;
+		this.vx=vx;
+		this.vy=vy;
+	}
+	
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		super.update();
+		x+=vx*10;
 	}
 	
 	@Override
 	public void render(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		
-		//REMOVE THIS
-		x+=vx*10;
 		
 		super.render(gc);
 		//test visual

@@ -87,7 +87,7 @@ public class Main extends Application{
 				for(int i=0; i<level.sprites.size(); i++){
 					level.sprites.get(i).render(gc);
 				}
-				
+				//System.out.println(level.sprites.size());
 			}
 		}.start();
 		

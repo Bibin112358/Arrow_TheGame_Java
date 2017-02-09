@@ -6,7 +6,7 @@ public class LevelTEST extends Level {
 		// TODO test
 		//instancing and intit
 		player = new Player(100,100);
-		Brick brick = new Brick(400, 400, 600, 100);
+		Brick brick = new Brick(400, 400, 600, 100, 0.1, 0);
 		//Collisions
 		collisions = new ArrayList<Move>();
 		collisions.add(player);

@@ -48,6 +48,7 @@ public class Arrow extends Move {
 			y=hitobj.y+Dy;
 			bx=hitobj.x+Dbx;
 			by=hitobj.y+Dby;
+			//rotate?
 		}
 	}
 	
@@ -81,6 +82,14 @@ public class Arrow extends Move {
 					Dy = y-hitobj.y;
 					Dbx= bx-hitobj.x;
 					Dby= by-hitobj.y;
+					//rotate?
+				}
+				if(spr instanceof Target){
+					Target t =(Target) spr;
+					if((x-spr.x)*(x-spr.x)+(y-spr.y)*(y-spr.y) >= t.r*t.r){
+						vx=0;
+						vy=0;
+					}
 				}
 			}
 		}

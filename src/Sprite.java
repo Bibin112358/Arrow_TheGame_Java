@@ -25,7 +25,7 @@ public class Sprite {
 	
 	public void update(/*double t*/){
 		
-	}///not needed?
+	}
 	
 	static public void setLevel(Level level){
 		Sprite.level = level;
