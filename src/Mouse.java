@@ -9,7 +9,7 @@ public class Mouse {
 	public Mouse() {
 		pressed = true;
 		released=false;
-		//strength=0;
+		time=0;
 	}
 	
 	public void getPos(double x, double y) {
@@ -18,10 +18,14 @@ public class Mouse {
 	}
 	
 	public void pull(){
-		time = time +  0.1;
+		
+		time += 2;
 	}
 	
 	public double get(){
-		return 1.0 - 1.0/Math.pow(2, time);
+		//linear strength
+		if(time > 100)
+			return 1;
+		return time/100;
 	}
 }

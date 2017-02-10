@@ -56,7 +56,7 @@ public class Player extends Move{
 	}
 	
 	public void camera(){
-		double d =x-Main.window_w/2;
+		double d =x-Main.window_w/6;
 		if(vx !=0){
 			d = d - 3*vx/Math.abs(vx); //feeling of speed
 		}

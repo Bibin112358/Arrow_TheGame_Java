@@ -21,7 +21,8 @@ public class Main extends Application{
 
 	//vars declaration
 	String title;
-	static int window_h=800, window_w=600;
+	static int window_h=600, window_w=800;
+	long t;
 	
 	//game vars in level
 	Level level;
@@ -65,16 +66,16 @@ public class Main extends Application{
 			public void handle(MouseEvent e) {
 				// TODO Auto-generated method stub
 				//System.out.println("P");
-				mouse = new Mouse(); //mousePos relative to scene
+				mouse = new Mouse(); 
 			}
 		});
 		
 		scene.setOnMouseReleased(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent e){
 				//System.out.println("R");
-				mouse.getPos(e.getX(), e.getY());
+				mouse.getPos(e.getX(), e.getY()); //mousePos relative to scene
 				mouse.released = true;
-				System.out.println(mouse.get());
+				//System.out.println(mouse.get());
 			}
 		});
 		
@@ -82,10 +83,13 @@ public class Main extends Application{
 		
 		level = new LevelTEST();
 		Sprite.setLevel(level);
-		
+		//t = System.currentTimeMillis();
 		new AnimationTimer() {
 			
 			public void handle(long now) {
+				
+				/*System.out.println(System.currentTimeMillis()-t);
+				t=System.currentTimeMillis();*/
 				
 				level.player.control(input, mouse);
 				for(int i=0; i<level.sprites.size(); i++){
