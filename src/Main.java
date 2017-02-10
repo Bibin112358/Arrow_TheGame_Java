@@ -61,9 +61,20 @@ public class Main extends Application{
 			}
 		});
 		
-		scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent e) {
+				// TODO Auto-generated method stub
+				//System.out.println("P");
+				mouse = new Mouse(); //mousePos relative to scene
+			}
+		});
+		
+		scene.setOnMouseReleased(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent e){
-				mouse = new Mouse(e.getX(), e.getY()); //mousePos relative to scene
+				//System.out.println("R");
+				mouse.getPos(e.getX(), e.getY());
+				mouse.released = true;
+				System.out.println(mouse.get());
 			}
 		});
 		

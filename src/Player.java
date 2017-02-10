@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 
 public class Player extends Move{
 
+	double strength = 20;
 	public Player(double w, double h) {
 		// TODO
 		//all test
@@ -62,7 +63,7 @@ public class Player extends Move{
 		for(int i=0; i<level.sprites.size(); i++){
 			level.sprites.get(i).moveCamera(d , 0);
 		}
-		System.out.println(d);
+		//System.out.println(d);
 	}
 	
 	//collision?
@@ -115,12 +116,17 @@ public class Player extends Move{
 	//control
 	public void control(ArrayList<String> input, Mouse mouse){
 	
-		if(mouse != null && mouse.b){
-			double ax = mouse.x - (x+w/2);
-			double ay = mouse.y - (y+h/2);
-			double k = 5 / (Math.sqrt(ay*ay + ax*ax));
-			new Arrow(x+w/2, y+h/2,ax*k, ay*k);
-			mouse.b = false;
+		if(mouse != null){
+			if(mouse.pressed && !mouse.released){
+				mouse.pull();
+			}else if(mouse.pressed && mouse.released){
+				double ax = mouse.x - (x+w/2);
+				double ay = mouse.y - (y+h/2);
+				double k = strength * mouse.get() / (Math.sqrt(ay*ay + ax*ax));
+				new Arrow(x+w/2, y+h/2,ax*k, ay*k);
+				mouse.pressed = false;
+				mouse.released = false;
+			}
 		}
 		
 		if(input.contains("D")){
