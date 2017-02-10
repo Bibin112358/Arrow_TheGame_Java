@@ -83,6 +83,7 @@ public class Main extends Application{
 				for(int i=0; i<level.collisions.size(); i++){
 					level.collisions.get(i).collision(level.sprites);
 				}
+				level.player.camera();
 				gc.clearRect(0, 0, window_w, window_h);
 				for(int i=0; i<level.sprites.size(); i++){
 					level.sprites.get(i).render(gc);

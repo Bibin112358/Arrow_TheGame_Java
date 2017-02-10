@@ -51,6 +51,10 @@ public class Player extends Move{
 				level.sprites.get(i).moveCamera(-10, 0);
 			}
 		}*/
+		
+	}
+	
+	public void camera(){
 		double d =x-Main.window_w/2;
 		if(vx !=0){
 			d = d - 3*vx/Math.abs(vx); //feeling of speed
@@ -58,7 +62,7 @@ public class Player extends Move{
 		for(int i=0; i<level.sprites.size(); i++){
 			level.sprites.get(i).moveCamera(d , 0);
 		}
-		
+		System.out.println(d);
 	}
 	
 	//collision?
