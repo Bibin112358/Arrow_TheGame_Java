@@ -34,8 +34,8 @@ public class Arrow extends Move {
 		if(!hit){
 			vy = vy + g*t;
 			
-			sx = sx + vx;
-			sy = sy + vy;
+			sx = sx + vx*t;
+			sy = sy + vy*t;
 			
 			double k = (Math.sqrt(vy*vy +vx*vx))/l;		
 		

@@ -29,7 +29,7 @@ public class Brick extends Sprite {
 	public void update() {
 		// TODO Auto-generated method stub
 		super.update();
-		x+=vx*10;
+		x+=vx*t;
 	}
 	
 	@Override
