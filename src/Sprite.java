@@ -13,6 +13,7 @@ public class Sprite {
 	double w; //width
 	double h; //height
 	double vx, vy;
+	static double t=1;
 	
 	Image[] im;
 	double pos;

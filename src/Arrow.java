@@ -30,7 +30,7 @@ public class Arrow extends Move {
 	public void update() {
 		// TODO Auto-generated method stub
 		//super.update();
-		double t=10; //different FPS?
+		//t different FPS?
 		if(!hit){
 			vy = vy + g*t;
 			

@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 public class Player extends Move{
 
-	double strength = 20;
+	double strength = 50;
 	public Player(double w, double h) {
 		// TODO
 		//all test
@@ -28,7 +28,7 @@ public class Player extends Move{
 	
 	@Override
 	public void update() {
-		double t=10; //maybe for different FPS
+		//t maybe for different FPS
 		// TODO
 		//super.update();
 		
@@ -130,16 +130,16 @@ public class Player extends Move{
 		}
 		
 		if(input.contains("D")){
-			vx=1;
+			vx=10;
 		}else if(input.contains("A")){
-			vx=-1;
+			vx=-10;
 		}else{
 			vx=0;
 		}
 		if(input.contains("W")){
-			vy=-1.5;
+			vy=-15;
 		}else if(input.contains("S")){
-			vy=1;
+			vy=10;
 		}else{
 			vy=0;
 		}

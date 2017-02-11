@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Move extends Sprite{
 
-	double g=0.01; //gravity
+	double g=0.3; //gravity
 	
 	public void update(){
 		//type?
