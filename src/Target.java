@@ -3,9 +3,9 @@ import javafx.geometry.Rectangle2D;
 
 public class Target extends Sprite {
 
-	double r;
+	int r;
 	boolean hit;
-	public Target(double x, double y, double r) {
+	public Target(int x, int y, int r) {
 		// TODO Auto-generated constructor stub
 		this.x=x;
 		this.y=y;

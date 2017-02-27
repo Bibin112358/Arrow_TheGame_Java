@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -5,7 +7,7 @@ public class PhysicsBrick extends Move {
 
 	Color color = Color.FIREBRICK;
 	
-	public PhysicsBrick(double x, double y) {
+	public PhysicsBrick(int x, int y) {
 		// TODO Auto-generated constructor stub
 		this.x=x;
 		this.y=y;
@@ -27,7 +29,22 @@ public class PhysicsBrick extends Move {
 		super.update();
 		vy = vy + g*t;
 		
-		x = x + vx*t;
-		y = y + vy*t;
+		x = (int) (x + vx*t);
+		y = (int) (y + vy*t);
+	}
+	
+	@Override
+	public void collision(ArrayList<Sprite> sprites) {
+		// TODO Auto-generated method stub
+		super.collision(sprites);
+		for(Sprite spr: sprites){
+			if(intersects(spr) && !spr.equals(this)){
+				if(spr instanceof Brick){
+					collisionBrick(spr);
+				}else if(spr instanceof Move){
+					collisionMove((Move) spr);
+				}
+			}
+		}
 	}
 }

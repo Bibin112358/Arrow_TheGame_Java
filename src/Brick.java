@@ -3,7 +3,7 @@ import javafx.scene.paint.Color;
 
 public class Brick extends Sprite {
 
-	public Brick(double x, double y, double w, double h) {
+	public Brick(int x, int y, int w, int h) {
 		// TODO Auto-generated constructor stub
 		this.x = x;
 		this.y =y;
@@ -14,7 +14,7 @@ public class Brick extends Sprite {
 		vy=0;
 	}
 	
-	public Brick(double x, double y, double w, double h, double vx, double vy) {
+	public Brick(int x, int y, int w, int h, double vx, double vy) {
 		// TODO Auto-generated constructor stub
 		this.x = x;
 		this.y =y;

@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 public class Player extends Move{
 
 	double strength = 50;
-	public Player(double w, double h) {
+	public Player(int w, int h) {
 		// TODO
 		//all test
 		this.h = h;
@@ -35,8 +35,8 @@ public class Player extends Move{
 		//TODO gravity
 		//vy = vy + 0.01*t;
 		
-		x = x + vx*t;
-		y = y + vy*t;
+		x = (int) (x + vx*t);
+		y = (int) (y + vy*t);
 		
 		
 		//maybe after collision detection?
@@ -76,35 +76,11 @@ public class Player extends Move{
 			if(intersects(spr) && !spr.equals(this)){
 				if(spr instanceof Brick){
 					
-					double player_x, player_y, brick_x, brick_y;
-					
-					double rvx = vx - spr.vx;
-					double rvy = vy - spr.vy;
-					
-					if(rvx>0){
-						player_x = this.x + this.w;
-						brick_x = spr.x;
-					}else{
-						player_x = this.x;
-						brick_x = spr.x + spr.w;
-					}
-					
-					if(rvy>0){
-						player_y = this.y + this.h;
-						brick_y = spr.y;
-					}else{
-						player_y = this.y;
-						brick_y = spr.y + spr.h;
-					}
-					
-					if(rvx!=0 && ( rvy==0 || (player_x - brick_x)/rvx < (player_y-brick_y)/rvy )){
-						//move x direction
-						this.x = this.x - (player_x - brick_x);
-					}else{
-						//move y direction
-						this.y = this.y - (player_y - brick_y);
-					}
+					collisionBrick(spr);
 					color = Color.ORANGE;
+				}else if(spr instanceof PhysicsBrick){
+					collisionMove((Move)spr);
+					color = Color.GREEN;
 				}else{
 					color = Color.RED;
 				}

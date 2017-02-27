@@ -14,8 +14,9 @@ public class LevelTEST extends Level {
 		collisions.add(box1);
 		//Sprites
 		sprites = new ArrayList<Sprite>();
-		sprites.add(player);
-		sprites.add(brick);
 		sprites.add(box1);
+		sprites.add(brick);
+		sprites.add(player);
+		
 	}
 }

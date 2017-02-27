@@ -7,11 +7,11 @@ public class Sprite {
 	//static double world_x, world_y; //to move inside the window
 	static Level level;
 	
-	double x; //relative to world coordinate
-	double y;
+	int x; //relative to world coordinate
+	int y;
 	//double r_x, r_y; //position on screen
-	double w; //width
-	double h; //height
+	int w; //width
+	int h; //height
 	double vx, vy;
 	static double t=1;
 	
@@ -44,7 +44,9 @@ public class Sprite {
 	}
 	
 	public void moveCamera(double dx, double dy){
-		x = x - dx;
-		y = y - dy;
+		x = (int) (x - dx);
+		y = (int) (y - dy);
 	}
+	
+	
 }

@@ -39,13 +39,13 @@ public class Arrow extends Move {
 			
 			double k = (Math.sqrt(vy*vy +vx*vx))/l;		
 		
-			x = sx + vx/k * s;
-			y = sy + vy/k * s;
+			x = (int) (sx + vx/k * s);
+			y = (int) (sy + vy/k * s);
 			bx = sx - vx/k * (1-s);
 			by = sy - vy/k * (1-s);
 		}else{
-			x=hitobj.x+Dx;
-			y=hitobj.y+Dy;
+			x=(int) (hitobj.x+Dx);
+			y=(int) (hitobj.y+Dy);
 			bx=hitobj.x+Dbx;
 			by=hitobj.y+Dby;
 			//rotate?
