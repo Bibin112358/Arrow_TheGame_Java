@@ -81,14 +81,15 @@ public class Move extends Sprite{
 			//move x direction
 			this.x = (int) (this.x - 1.0/2*(player_x - brick_x));
 			m.x = (int) (m.x + 1.0/2*(player_x - brick_x));
-			/*this.vx = 0;
-			m.vx = 0;*/
+			this.vx -= 0.5*rvx;
+			System.out.println(this.vx);
+			m.vx += 0.5*rvx;
 		}else{
 			//move y direction
 			this.y = (int) (this.y - 1.0/2*(player_y - brick_y));
 			m.y = (int) (m.y + 1.0/2*(player_y - brick_y));
-			/*this.vy = 0;
-			m.vy = 0;*/
+			this.vy -= 0.5*rvy;
+			m.vy += 0.5*rvy;
 		}
 		
 	}

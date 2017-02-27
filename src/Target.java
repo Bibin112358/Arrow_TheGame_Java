@@ -1,4 +1,6 @@
 import javafx.geometry.Rectangle2D;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 
 public class Target extends Sprite {
@@ -17,4 +19,20 @@ public class Target extends Sprite {
 		// TODO Auto-generated method stub
 		return new Rectangle2D(x-r, y-r, 2*r, 2*r);
 	}
+	
+	@Override
+	public void render(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		super.render(gc);
+		gc.setFill(Color.ORANGERED);
+		gc.fillOval(x-r, y-r, 2*r, 2*r);
+	}
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		super.update();
+	}
+	
+	
 }

@@ -7,16 +7,23 @@ public class LevelTEST extends Level {
 		//instancing and intit
 		player = new Player(100,100);
 		Brick brick = new Brick(400, 400, 3000, 100, 0, 0);
-		PhysicsBrick box1 = new PhysicsBrick(500, -100);
+		Target t = new Target(400, 400, 10);
+		
+		TriggerBrick triggered = new MouseTrigger(600, -100, 50, 500, 100, 0, -2);
+		//triggers
+		triggers = new ArrayList<TriggerBrick>();
+		triggers.add(triggered);
+		
 		//Collisions
 		collisions = new ArrayList<Move>();
 		collisions.add(player);
-		collisions.add(box1);
+		
 		//Sprites
 		sprites = new ArrayList<Sprite>();
-		sprites.add(box1);
 		sprites.add(brick);
 		sprites.add(player);
+		sprites.add(t);
+		sprites.add(triggered);
 		
 	}
 }

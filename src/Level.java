@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public class Level {
 
 	Player player;
+	//TEST REMOVE
+	ArrayList<TriggerBrick> triggers;
+	
 	//enemy
 	ArrayList<Sprite> sprites;
 	ArrayList<Move> collisions;

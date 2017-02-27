@@ -29,7 +29,7 @@ public class Main extends Application{
 	GraphicsContext gc;
 	
 	ArrayList<String> input = new ArrayList<String>();
-	Mouse mouse;
+	static Mouse mouse;
 	
 	public void start(Stage s){
 		
@@ -92,17 +92,27 @@ public class Main extends Application{
 				t=System.currentTimeMillis();*/
 				
 				level.player.control(input, mouse);
+				
 				for(int i=0; i<level.sprites.size(); i++){
 					level.sprites.get(i).update();
 				}
+				
+				
 				for(int i=0; i<level.collisions.size(); i++){
 					level.collisions.get(i).collision(level.sprites);
 				}
+				
+				for(int i=0; i<level.triggers.size(); i++){
+					level.triggers.get(i).trigger(level);
+				}
+				
 				level.player.camera();
 				gc.clearRect(0, 0, window_w, window_h);
 				for(int i=0; i<level.sprites.size(); i++){
 					level.sprites.get(i).render(gc);
 				}
+				
+				
 				//System.out.println(level.sprites.size());
 			}
 		}.start();
